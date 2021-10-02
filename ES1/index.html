@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Es1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <p id="hello"></p>
+    <script>
+        var birth_year = [2008, 1983, 1990, 2000];
+        var this_year = 2021;
+        var drink_alcohol = [false, false, false, false];
+
+        for (var i = 0; i < birth_year.length; i++) {
+            if (this_year - birth_year[i] < 18) {
+                drink_alcohol[i] = false;
+            } else {
+                drink_alcohol[i] = true;
+            }
+        }
+        for (var i = 0; i < drink_alcohol.length; i++) {
+            document.getElementById("hello").innerHTML += birth_year[i] + " --> " + drink_alcohol[i] + "<br>";
+        }
+    </script>
+</body>
+
+</html>

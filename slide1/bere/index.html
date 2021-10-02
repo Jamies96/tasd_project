@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <p id="testo"></p>
+    <script>
+        var names = ["Anna", "Brittany", "Cinderella", "Diana"];
+        var ages = [15, 35, 28, 18];
+        var drink_alcohol = [];
+        for (var i = 0; i < names.length; ++i) {
+            if (ages[i] < 18) {
+                drink_alcohol[i] = false;
+            } else {
+                drink_alcohol[i] = true;
+            }
+            document.getElementById("testo").innerHTML += names[i] + " può bere? " + drink_alcohol[i] + "<br>";
+        }
+
+    </script>
+</body>
+
+</html>
