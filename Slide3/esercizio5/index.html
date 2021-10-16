@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>Cerca il valore più piccolo in un array</h2>
+<p></p>
+<p>Array: <span id="valori"></span></p>
+<p>Min val: <span id="minore"></span></p>
+
+<script>
+    var array = [7, 14, 1, 1, 21, 5, 55, 60];
+    var minimo = array[0];
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] < minimo) {
+            minimo = array[i];
+        }
+    }
+    document.getElementById("valori").innerHTML = array;
+    document.getElementById("minore").innerHTML = minimo;
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Start typing a name in the input field below:</h3>
+
+<form>
+    First name: <input type="text" id="txt1" onkeyup="showHint(this.value)">
+
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+
+<script>
+
+    function showHint(str) {
+        var names = ["Anna", "Brittany", "Cinderella", "Diana", "Eva", "Fiona", "Gunda", "Hege", "Inga", "Johanna",
+            "Kitty", "Linda", "Nina", "Ophelia", "Petunia", "Amanda", "Raquel", "Cindy", "Doris", "Eve", "Evita", "Sunniva",
+            "Tove", "Unni", "Violet", "Liza", "Elizabeth", "Ellen", "Wenche", "Vicky"];
+        var hint = "";
+        if (str.length == 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        // lookup all hints from array if length of str>0
+        for (i = 0; i < names.length; i++) {
+            if (names[i].indexOf(str) == 0) {
+                if (hint.length == 0)
+                    hint = names[i];
+                else
+                    hint = hint + ", " + names[i];
+            }
+        }
+        document.getElementById("txtHint").innerHTML = hint;
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="colori.css">
+</head>
+<body>
+<div id="text" class="myText"></div>
+<script>
+    var day = new Date().getDate();
+
+    if (day % 2 === 0) {
+        document.getElementById("text").innerHTML = "Benvenuti, oggi non è un bel giorno";
+    } else {
+        document.getElementById("myText").innerHTML = "Benvenuti, oggi è un bel giorno";
+        windows.alert("myText");
+    }
+
+
+</script>
+</body>
+</html>

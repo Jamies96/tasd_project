@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>Cerca il valore più piccolo in un array</h2>
+<p>Array: <span id="valori"></span></p>
+<P>Array: <span id="valori1"></span></P>
+<P>Array: <span id="valori2"></span></P>
+<p>Min val: <span id="minore"></span></p>
+<p>Min val1: <span id="minore1"></span></p>
+<p>Min val2: <span id="minore2"></span></p>
+
+<script>
+
+
+    function calcola_min(array) {
+        for (i = 1; i < array.length; i++) {
+            if (array[i] < minimo) {
+                minimo = array[i];
+                return minimo;
+
+            }
+
+        }
+        /*for (i = 1; i < array1.length; i++) {
+            if (array1[i] < minimo1) {
+                minimo1 = array1[i];
+                return minimo1;
+
+            }
+
+        }
+        for (i = 1; i < array2.length; i++) {
+            if (array2[i] < minimo2) {
+                minimo2 = array2[i];
+                return minimo2;
+
+            }
+
+        }*/
+    }
+
+    var array = [7, 14, 4, 21, 5, 60];
+    var array1 = [58, 9, 10, 30, 1, 76];
+    var array2 = [2, 49, 0, 5, 23, 88];
+    var minimo = array[0];
+    var minimo1 = array1[0];
+    //var minimo2 = array2[0];
+
+    calcola_min(array);
+
+   calcola_min(array1);
+   // calcola_min(array2);
+    document.getElementById("valori").innerHTML = array;
+    //document.getElementById("valori2").innerHTML = array2;
+    document.getElementById("valori1").innerHTML = array1;
+    document.getElementById("minore").innerHTML = minimo;
+    document.getElementById("minore1").innerHTML = minimo1;
+   //document.getElementById("minore1").innerHTML = minimo;
+
+</script>
+</body>
+</html>

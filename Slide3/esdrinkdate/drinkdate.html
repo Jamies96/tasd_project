@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puoi bere?</title>
+    <link rel="stylesheet" type="text/css" href="stili.css">
+</head>
+<body>
+<h1>Puoi bere?</h1>
+<form>
+    <label>
+        <span id="text">Inserisci il tuo anno di nascita:</span>
+        <input type="number" placeholder="Anno" id="birthYear" onkeyup="myBirthYear(this.value)"/>
+    </label>
+    <button type="button" id="button" onclick="displayDate()">Invio</button>
+    <p id="years"></p>
+</form>
+
+<script>
+    var birthYear = document.getElementById("birthYear").value;
+    var fullYear = new Date();
+
+    function myBirthYear(value) {
+        birthYear = value;
+    }
+
+    function displayDate() {
+        var age = fullYear.getFullYear() - birthYear;
+        if (age < 18) {
+            document.getElementById("years").innerHTML = "No, non puoi bere";
+        } else {
+            document.getElementById("years").innerHTML = "Sì, puoi bere"
+        }
+    }
+
+</script>
+</body>
+</html>

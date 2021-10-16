@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quanti anni hai?</title>
+    <link rel="stylesheet" href="stili.css">
+</head>
+<body>
+<h1>Quanti anni hai?</h1>
+<form>
+    <label>
+        <span id="text">Inserisci il tuo anno di nascita:</span>
+        <input type="number" id="birthYear" onkeyup="getMyBirthYear(this.value)"></input>
+    </label>
+    <button type="button" id="button" onclick="displayDate()">Invio</button>
+    <p id="years"></p>
+</form>
+
+<script>
+    var birthYear = document.getElementById("birthYear").value;
+    var fullYear = new Date().getFullYear();
+
+
+    function getMyBirthYear() {
+        birthYear = document.getElementById("birthYear").value;
+        return birthYear;
+    }
+
+    function displayDate() {
+        var age = fullYear-birthYear;
+        age = fullYear - birthYear;
+        document.getElementById("years").innerHTML = age;
+
+    }
+
+</script>
+</body>
+</html>

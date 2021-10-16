@@ -1,0 +1,44 @@
+h1, #text, label, button {
+    position: relative;
+    bottom: 50%;
+}
+
+
+
+h1 {
+    text-align: center;
+    color: indigo;
+
+
+}
+
+#text {
+    font-weight: lighter;
+    height: 20%;
+    font-family: sans-serif;
+}
+
+label, button {
+    position: relative;
+    left: 36%;
+
+}
+
+button {
+    color: indigo;
+    border: none;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+button:hover {
+    color: palevioletred;
+}
+
+#years {
+    text-align: center;
+    font-family: "Book Antiqua", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: indigo;
+}
