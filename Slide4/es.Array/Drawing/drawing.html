@@ -4,6 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+
+            height: 15px;
+            border-radius: 5px;
+            background: SILVER;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: MAGENTA;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,12 +45,20 @@
             canvas.
         </p>
         <div>
-            <input type="range" id="myRange" min="0" max="400" step="10" style="background-color:  magenta;">
+            <input type="range" id="myRange" min="0" max="400" step="10">
             <label for="myRange">Set threshold</label>
             <p>Threshold value: <span id="myFilter"></span></p>
         </div>
+        <button type="button" id="button">Draw shadow</button>
         <script>
 
+            /***FUNCTIONS***/
+
+            /**
+             * Draw a vertical line inside the canvas given a position (x) and a color.
+             * @param {int} x - the x coordinate where draw the line
+             * @param {color} color - the color of the drawed line
+             */
             function drawLine(x, color) {
                 ctx.beginPath(); // start a new drawing
                 ctx.moveTo(x, 0); // starting point
@@ -37,18 +68,35 @@
                 ctx.stroke(); // make the line visible
             }
 
-            function drawPoint(x, y) {
+            function drawPoint(x, y, shadow = false) {
                 ctx.beginPath(); // start a new drawing
                 ctx.arc(x, y, 5, 0, 2 * Math.PI);
                 // draw an arc (centerX, centerY, radius, from, to)
-                if (x < slider.value)
-                    ctx.fillStyle = "red"; // on the left half
-                else
-                    ctx.fillStyle = "blue"; // on the right half
+                if (!shadow) {
+                    if (x < slider.value)
+                        ctx.fillStyle = "red"; // on the left half
+                    else
+                        ctx.fillStyle = "blue"; // on the right half
+                } else { 
+                    ctx.fillStyle = "lightgrey"; 
+                } 
                 ctx.fill();
                 // actually draw the picture (make it visible)
 
             }
+
+            function drawShadow(event) {
+                let pointsShadow = cooPoint.map(function (value) {
+                    return [(value[0] + 3), value[1]];
+                });
+                for (let i = 0; i < pointsShadow.length; i++) {                    
+                    drawPoint(pointsShadow[i][0], pointsShadow[i][1], true);
+                }
+                for (let tuple of cooPoint){
+                    drawPoint(tuple[0], tuple[1]);
+                }
+            }
+
 
             /***/
 
@@ -86,7 +134,7 @@
             let oldValueSlider = 200;
 
             slider.addEventListener("change", function (event) {
-                let newValue = parseInt(slider.value);                
+                let newValue = parseInt(slider.value);
                 drawLine(oldValueSlider, "yellow");
                 drawLine(newValue, "magenta");
                 let filteredPoints;
@@ -95,7 +143,7 @@
                         return oldValueSlider <= tuple[0] && tuple[0] <= newValue;
                     });
                 } else {
-                    filteredPoints = cooPoint.filter(function (tuple) {                        
+                    filteredPoints = cooPoint.filter(function (tuple) {
                         return newValue <= tuple[0] && tuple[0] <= oldValueSlider;
                     });
                 }
@@ -103,7 +151,6 @@
                     drawPoint(tuple[0], tuple[1]);
                 }
                 oldValueSlider = newValue;
-                
             })
 
             /*slider.addEventListener("change", function (event) {
@@ -112,6 +159,7 @@
                 }
             })*/
 
+            button.addEventListener("click", drawShadow);
 
 
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <label for="form">Inserisci i numeri divisi tra punto e virgola: </label>
+    <input id="form" />
+    <button id="button" onclick="computeMin()">Calcola il minimo</button>
+    <button id="button-sort-asc" onclick="sorting(this.id)">Ordina l'array crescente</button>
+    <button id="button-sort-desc" onclick="sorting(this.id)">Ordina l'array decrescente</button>
+    <p>Minimo: <span id="minimo"></span> </p>
+    <p>Ordine crescente: <span id="crescente"></span> </p>
+    <p>Ordine decrescente: <span id="decrescente"></span> </p>
+
+
+    <script>
+        const form = document.getElementById("form");
+        form.value = "12;4;71;2;45;";
+
+        function createArray() {
+            let numbers = form.value.split(";");
+            console.log(numbers);
+            numbers = numbers.map(function(value) {
+                return parseInt(value);
+            });
+            console.log(numbers);
+            numbers = numbers.filter(function(value) {
+                if (isNaN(value)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+            return numbers;
+
+        }
+
+        function computeMin() {
+            let numbers = createArray();
+            console.log(numbers);
+            let valMinimo = min(numbers);
+            document.getElementById("minimo").innerHTML = valMinimo;
+
+
+
+
+        }
+
+
+
+        function sorting(idButton) {
+            let numbers = createArray();
+            let arraySorted = [];
+            while (numbers.length != 0) {
+                let minimo = min(numbers);
+                arraySorted.push(minimo);
+                let indexOfMin = numbers.indexOf(minimo);
+                numbers.splice(indexOfMin, 1);
+            }
+            if (idButton == "button-sort-asc") {
+                document.getElementById("crescente").innerHTML = arraySorted;
+            }
+            if (idButton == "button-sort-desc") {
+                document.getElementById("decrescente").innerHTML = arraySorted.reverse();
+            }
+
+
+        }
+
+        function min(array) {
+            let minimo = array[0];
+            for (let i = 1; i < array.length; i++) {
+                if (minimo > array[i]) {
+                    minimo = array[i];
+                }
+            }
+            return minimo;
+        }
+    </script>
+</body>
+
+</html>

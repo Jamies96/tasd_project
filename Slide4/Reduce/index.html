@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <p>Sum: <span id="sum"></span></p>
+    <script>
+        const numbers = [4, 8, 3, 33, 6, 32, 7];
+        let somma = numbers.reduce(function(pValue, cValue) {
+            let sum = pValue + cValue;
+            return sum;
+        })
+        document.getElementById("sum").innerHTML = somma;
+    </script>
+</body>
+
+</html>

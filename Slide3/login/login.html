@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="stilelogin.css">
 </head>
+
 <body>
 
 
-<h1>Login</h1>
-<label>Accedi al tuo Corso di Laurea:
+    <h1>Login</h1>
+    <label for="codeBachelor">Accedi al tuo Corso di Laurea:</label>
     <input placeholder="ex. L-21" id="codeBachelor" onkeyup="showHint(this.value)"></input>
-</label>
-<br>
-<label>Suggerimenti:
+
+    <br>
+    <label for="suggestions">Suggerimenti:</label>
     <p><span id="suggestions"></span></p>
-</label>
 
 
-<script>
-    var degree = ["L-20", "L-31", "LM-92", "LM-18"];
 
-    function showHint(str) {
-        var suggestion = "";
-        if (str.length == 0) {
-            document.getElementById("suggestions").innerHTML = "";
-            return;
-        }
+    <script>
+        var degree = ["L-20", "L-31", "LM-92", "LM-18"];
 
-     // lookup all hints from array if length of str>0
-        for (i = 0; i < degree.length; i++) {
-            if (degree[i].indexOf(str) == 0) {
-                if (suggestion.length == 0) {
-                    suggestion = "<button type='button' onclick='GetMySuggestion(degree[i])'>"+ degree[i] + "</button>";
-                } else {
-                    suggestion = suggestion +
-                        "<button type='button' onclick='GetMySuggestion(degree[i])'>"
-                        + degree[i] + "</button>";
-                }
+        function showHint(str) {
+            var suggestion = "";
+            if (str.length == 0) {
+                document.getElementById("suggestions").innerHTML = "";
+                return;
             }
-            document.getElementById("suggestions").innerHTML = suggestion;
 
-
+            // lookup all hints from array if length of str>0
+            for (i = 0; i < degree.length; i++) {
+                if (degree[i].startsWith(str)) {
+                    if (suggestion.length == 0) {
+                        suggestion = "<button type='button' onclick='GetMySuggestion(" + i + ")'>" + degree[i] + "</button>";
+                    } else {
+                        suggestion = suggestion +
+                            "<button type='button' onclick='GetMySuggestion(" + i + ")'>" +
+                            degree[i] + "</button>";
+                    }
+                }
+                document.getElementById("suggestions").innerHTML = suggestion;
+            }
         }
-    }
 
-
-
-    function GetMySuggestion (valore) {
-        document.getElementById("codeBachelor").value = valore;
-        console.log("funziona " + valore);
-    }
-
-
-</script>
+        function GetMySuggestion(indice) {
+            document.getElementById("codeBachelor").value = degree[indice];
+            console.log("funziona " + valore);
+        }
+    </script>
 </body>
+
 </html>
