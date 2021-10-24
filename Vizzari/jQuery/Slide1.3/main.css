@@ -1,0 +1,37 @@
+body {
+    padding: 20px;
+}
+
+#todolist {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+}
+
+#todolist li {
+    cursor: pointer;
+    padding: 4px 0;
+    margin: 6px 0;
+    transition: all 0.2s;
+}
+
+#todolist li:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0c8";
+    font-weight: 500;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+#todolist li.done:before {
+    content: "\f14a";
+}
+
+#insert-new input,
+#insert-new button {
+    padding: 6px;
+}
+
+.highlight {
+    background: yellow;
+}
