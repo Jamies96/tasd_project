@@ -48,7 +48,6 @@
             <p>Threshold value: <span id="myFilter"></span></p>
         </div>
         <button type="button" id="button">Draw shadow</button>
-        <button type="button" id="button2">Delete shadow</button>
         <script>
             /***FUNCTIONS***/
 
@@ -80,41 +79,9 @@
                 }
                 ctx.fill();
                 // actually draw the picture (make it visible)
-
-            }
-            function drawPointYellow(x, y, shadow = false) {
-                ctx.beginPath(); // start a new drawing
-                ctx.arc(x, y, 5, 0, 2 * Math.PI);
-                // draw an arc (centerX, centerY, radius, from, to)
-                if (!shadow) {
-                    if (x < slider.value)
-                        ctx.fillStyle = "red"; // on the left half
-                    else
-                        ctx.fillStyle = "blue"; // on the right half
-                } else {
-                    ctx.fillStyle = "yellow";
-                }
-                ctx.fill();
-                // actually draw the picture (make it visible)
-
             }
 
-
-            /*
-            * let withShadow= false
-            * dentro la funzione scrivo withShadow= true;
-            * poi metto un if-else nell'handler quindi
-            * if (withShadow){
-            disegno il punto grigio traslato let shadow = {cx:point.cx+3, cy:point.cy, color:lightgrey};
-            drawPoint(shadow);
-             */
-<<<<<<< HEAD
-=======
-            let withShadow = false;
-
->>>>>>> b900af7effa3ed0869627f35bced8ce69b996b73
             function drawShadow(event) {
-                let withShadow = true;
                 let pointsShadow = cooPoint.map(function(value) {
                     return [(value[0] + 3), value[1]];
                 });
@@ -124,38 +91,11 @@
                 for (let tuple of cooPoint) {
                     drawPoint(tuple[0], tuple[1]);
                 }
-
             }
 
-            function deleteShadow(event) {
-                let pointsShadow = cooPoint.map(function (value) {
-                    return [(value[0] + 3), value[1]]
-
-                });
-                for (let i = 0; i < pointsShadow.length; i++) {
-                    drawPointYellow(pointsShadow[i][0], pointsShadow[i][1], true);
-                }
-                for (let tuple of cooPoint){
-                    drawPointYellow(tuple[0], tuple[1]);
 
 
-                }
-
-            }
-
-            /***/
-
-            const canvas = document.getElementById("myCanvas");
-            // get access to the canvas
-            const ctx = canvas.getContext("2d");
-            // to support 2d drawing
-            const getPoint = document.getElementById("myCanvas");
-            // to support interaction on canvas
-
-            let cooPoint = [];
-
-            getPoint.addEventListener("click", function(event) {
-                // implicit callback function onclick on canvas
+            function drawPointWhenClickCanvas(event) {
                 let cX = event.clientX;
                 let cY = event.clientY;
 
@@ -163,23 +103,18 @@
                 cooPoint.push(coo);
                 drawPoint(cX, cY);
 
-
                 document.getElementById("demo").innerHTML = "Coordinate of last click: X = " + cX + ", Y = " + cY;
-            })
+            }
 
-            const slider = document.getElementById("myRange");
-            slider.addEventListener("change", function(event) {
+
+
+            function writeSliderCurrentValue(event) {
                 document.getElementById("myFilter").innerHTML = slider.value;
-            })
+            }
 
-            document.getElementById("myFilter").innerHTML = slider.value;
-            drawLine(200, "magenta");
 
-            /*******/
 
-            let oldValueSlider = 200;
-
-            slider.addEventListener("change", function(event) {
+            function redrawSliderAndPoints(event) {
                 let newValue = parseInt(slider.value);
                 drawLine(oldValueSlider, "yellow");
                 drawLine(newValue, "magenta");
@@ -197,7 +132,33 @@
                     drawPoint(tuple[0], tuple[1]);
                 }
                 oldValueSlider = newValue;
-            })
+            }
+
+
+            /***/
+
+            const canvas = document.getElementById("myCanvas");
+            // get access to the canvas
+            const ctx = canvas.getContext("2d");
+            // to support 2d drawing
+            const getPoint = document.getElementById("myCanvas");
+            // to support interaction on canvas
+
+            let cooPoint = [];
+
+            getPoint.addEventListener("click", drawPointWhenClickCanvas)
+
+            const slider = document.getElementById("myRange");
+            slider.addEventListener("change", writeSliderCurrentValue)
+
+            document.getElementById("myFilter").innerHTML = slider.value;
+            drawLine(200, "magenta");
+
+            /*******/
+
+            let oldValueSlider = 200;
+
+            slider.addEventListener("change", redrawSliderAndPoints)
 
             /*slider.addEventListener("change", function (event) {
                 for (let tuple of cooPoint){
@@ -205,19 +166,7 @@
                 }
             })*/
 
-<<<<<<< HEAD
             button.addEventListener("click", drawShadow);
-            button2.addEventListener("click", deleteShadow);
-
-
-
-=======
-            button.addEventListener("click", function(event) {
-                if (withShadow) {
-                    drawShadow();
-                }
-            };)
->>>>>>> b900af7effa3ed0869627f35bced8ce69b996b73
         </script>
     </body>
 
