@@ -50,6 +50,7 @@
             <p>Threshold value: <span id="myFilter"></span></p>
         </div>
         <button type="button" id="button">Draw shadow</button>
+        <button type="button" id="button2">Delete shadow</button>
         <script>
 
             /***FUNCTIONS***/
@@ -84,6 +85,23 @@
                 // actually draw the picture (make it visible)
 
             }
+            function drawPointYellow(x, y, shadow = false) {
+                ctx.beginPath(); // start a new drawing
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                // draw an arc (centerX, centerY, radius, from, to)
+                if (!shadow) {
+                    if (x < slider.value)
+                        ctx.fillStyle = "red"; // on the left half
+                    else
+                        ctx.fillStyle = "blue"; // on the right half
+                } else {
+                    ctx.fillStyle = "yellow";
+                }
+                ctx.fill();
+                // actually draw the picture (make it visible)
+
+            }
+
 
             /*
             * let withShadow= false
@@ -93,7 +111,6 @@
             disegno il punto grigio traslato let shadow = {cx:point.cx+3, cy:point.cy, color:lightgrey};
             drawPoint(shadow);
              */
-
             function drawShadow(event) {
                 let pointsShadow = cooPoint.map(function (value) {
                     return [(value[0] + 3), value[1]];
@@ -104,8 +121,24 @@
                 for (let tuple of cooPoint){
                     drawPoint(tuple[0], tuple[1]);
                 }
+
             }
 
+            function deleteShadow(event) {
+                let pointsShadow = cooPoint.map(function (value) {
+                    return [(value[0] + 3), value[1]]
+
+                });
+                for (let i = 0; i < pointsShadow.length; i++) {
+                    drawPointYellow(pointsShadow[i][0], pointsShadow[i][1], true);
+                }
+                for (let tuple of cooPoint){
+                    drawPointYellow(tuple[0], tuple[1]);
+
+
+                }
+
+            }
 
             /***/
 
@@ -126,6 +159,7 @@
                 let coo = [cX, cY];
                 cooPoint.push(coo);
                 drawPoint(cX, cY);
+
 
                 document.getElementById("demo").innerHTML = "Coordinate of last click: X = " + cX + ", Y = " + cY;
             })
@@ -169,6 +203,7 @@
             })*/
 
             button.addEventListener("click", drawShadow);
+            button2.addEventListener("click", deleteShadow);
 
 
 
