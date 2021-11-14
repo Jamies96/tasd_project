@@ -4,6 +4,7 @@ import './App.css';
 import BottoneMagico from './components/BottoneMagico/BottoneMagico';
 import BottoneLista from './components/BottoneLista/BottoneLista';
 import ToDoList from './components/ToDoList/ToDoList';
+import MyButton from './components/Button/Button';
 
 
 
@@ -29,6 +30,10 @@ function App() {
         <BottoneLista/>
         <hr/>
         <ToDoList/>
+        <MyButton mylabel="ciao"/>
+        {
+/*        <MyButton hello="Ciao" name="bimbo"/>
+        */}
       </header>
     </div>
   );

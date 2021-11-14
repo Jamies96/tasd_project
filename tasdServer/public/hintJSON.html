@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hind</title>
+</head>
+<body>
+<h3>Start typing a name in the input field below:</h3>
+<span id="form"></span>
+<p>Suggestions: <span id="txtHint"></span></p>
+
+<script>
+    var names;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            names = JSON.parse(xhttp.responseText);
+            document.getElementById("form").innerHTML = '<form>
+                First name: <input type="text" id="txt1" onkeyup="showHint(this.value)">
+                </form>'
+        }
+    };
+    xhttp.open("GET", "/tasd2019/elenco", true);
+    xhttp.send();
+
+    function showHint(str) {
+        var hint = "";
+        if (str.length == 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        // lookup all hints from array if length of str>0
+        for (i = 0; i < names.length; i++) {
+            if (names[i].indexOf(str) == 0) {
+                if (hint.length == 0)
+                    hint = names[i];
+                else
+                    hint = hint + ", " + names[i];
+            }
+        }
+        document.getElementById("txtHint").innerHTML = hint;
+    }
+</script>
+</body>
+</html>

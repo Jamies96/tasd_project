@@ -1,5 +1,4 @@
 import React from "react";
-import { ThemeProvider } from "react-bootstrap";
 import './ToDoList.css';
 
 class ToDoList extends React.Component {
@@ -9,54 +8,40 @@ class ToDoList extends React.Component {
             itemList: [],
             textInput: ""
         }
-
-        /*
-        prototipo:
-        itemList: [
-            {
-                text: spesa,
-                checked: true
-    
-            }
-        ]
-    */
-
     }
 
     render() {
-
+        let listAll = this.state.itemList.map((x) => this.trasformListItemsAndCheck(x));
+        
         let listDone = this.state.itemList.filter((x) => { return x.checked === true });
-        let listTodo = this.state.itemList.filter((x) => { return x.checked === false });
-
-        let lista = this.state.itemList.map((x) => this.trasformListItemsAndCheck(x));
-        listTodo = listTodo.map((x) => this.trasformListItemsAndCheck(x));
         listDone = listDone.map((x) => this.trasformListItemsAndCheck(x));
+        
+        let listTodo = this.state.itemList.filter((x) => { return x.checked === false });
+        listTodo = listTodo.map((x) => this.trasformListItemsAndCheck(x));
 
         return (
             <div>
-                <div className="container">
+                <div className="container text-center">
                     <div className="row">
                         <div className="col">
                             <h1 className="display-2 text-center">ToDoList Exercise</h1>
                         </div>
                     </div>
-                </div>
-                <div className="container  text-center">
                     <div className="row">
                         <div className="col">
                             <h3>All</h3>
                         </div>
                         <div className="col">
-                        <h3>Done</h3>
+                            <h3>Done</h3>
                         </div>
                         <div className="col">
-                        <h3>Todo</h3>
+                            <h3>Todo</h3>
                         </div>
                     </div>
-                    <hr className="bg-white"/>
-                    <div className="row  ">
+                    <hr className="bg-white" />
+                    <div className="row">
                         <div className="col">
-                            <ul className="list-group">{lista}</ul>
+                            <ul className="list-group">{listAll}</ul>
                         </div>
                         <div className="col">
                             <ul className="list-group">{listDone}</ul>
@@ -68,30 +53,25 @@ class ToDoList extends React.Component {
                     <div className="row top-gutter ">
                         <div className="col-md-4 offset-md-4">
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" value={this.state.textInput} onChange={(event) => this.handleChange(event)} onKeyUp={(event)=>this.checkKeyIsEnter(event)}/>
+                                <input type="text" className="form-control" value={this.state.textInput} onChange={(event) => this.handleChange(event)} onKeyUp={(event) => this.checkKeyIsEnter(event)} />
                                 <button className="btn btn-outline-info left-gutter" onClick={() => this.addElement()}>Add Item</button>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         )
-
     }
 
     checkKeyIsEnter(event) {
-        if(event.key === "Enter") {
-            this.addElement()
+        if (event.key === "Enter") {
+            this.addElement();
         }
     }
 
     handleChange(event) {
         let text = event.target.value;
-        let itemListCopy = this.state.itemList
+        let itemListCopy = this.state.itemList;
         this.setState({
             textInput: text,
             itemList: itemListCopy
@@ -103,11 +83,11 @@ class ToDoList extends React.Component {
             return;
         }
         let list = this.state.itemList;
-        let pos = list.length;
+        let number = list.length;
         list.push({
             text: this.state.textInput,
             checked: false,
-            position: pos
+            position: number
         });
         this.setState({
             textInput: "",

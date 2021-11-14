@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ajax Example 1 - content replacement</title>
+
+
+</head>
+<body>
+	<div id="demo">
+		<h1>First Example</h1>
+		<p>This is a first example of a page including some javascript
+			code to replace the content of the page.</p>
+		<p>Just click on the button to change this text.</p>
+	</div>
+	<br>
+	<button type="button" onclick="loadDoc()">Replace Text</button>
+	
+	<script>
+	function loadDoc() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				document.getElementById("demo").innerHTML = xhttp.responseText;
+			}
+		};
+		xhttp.open("GET", "ajax_text.txt", true);
+		xhttp.send();
+	}
+</script>
+	
+</body>
+</html>

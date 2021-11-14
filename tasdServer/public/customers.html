@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View a list of clients</title>
+    <style>
+        h1 {
+            border-bottom: 3px solid #cc9900;
+            color: #996600;
+            font-size: 30px;
+        }
+
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Customers</h1>
+<div id="id01">
+    <button type="button" onclick="loadDoc()">Get customers list</button>
+</div>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                showTable(JSON.parse(xhttp.responseText));
+            }
+        };
+        xhttp.open("GET", "/tasd/industry", true);
+        xhttp.send();
+    }
+
+    function showTable(arr) {
+        var out = "<table>";
+        for (i = 0; i < arr.length; i++) {
+            out += "<tr><td>" + arr[i].Name + "</td><td>" + arr[i].City
+                + "</td><td>" + arr[i].Country + "</td></tr>";
+        }
+        out += "</table>";
+        document.getElementById("id01").innerHTML = out;
+    }
+</script>
+
+</body>
+</html>
