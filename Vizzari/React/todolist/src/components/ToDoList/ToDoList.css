@@ -1,0 +1,12 @@
+ul li {
+    list-style-type: none;
+    text-align: left;
+}
+
+.top-gutter {
+    margin-top: 5%;
+}
+
+.left-gutter {
+    margin-left: 2%;
+}
