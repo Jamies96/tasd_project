@@ -24,10 +24,14 @@ function Header(props) {
             </NavItem>
         );
     });
+    const brSpaces = [];
+    for(let i = 0; i < 3; ++i) {
+        brSpaces.push(<br/>)
+    }
 
     return (
         <>
-            <Navbar dark full expand="md">
+            <Navbar dark full expand="md" fixed="top">
                 <NavbarBrand>
                     <RouterLink to="/">
                         <img src={logo} />
@@ -40,6 +44,7 @@ function Header(props) {
                     </Nav>
                 </Collapse>
             </Navbar>
+            {brSpaces}
         </ >
     )
 }

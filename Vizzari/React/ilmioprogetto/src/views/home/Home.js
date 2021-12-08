@@ -1,12 +1,29 @@
 import React from 'react';
+import YugiohCard from '../../components/yugiohCard/YugiohCard';
 
-function Home(){
+function Home(props) {
+  const cardsID = props.cardsID
+  const apiUrl = props.apiUrl;
+
+  const cards = cardsID.map((cardID) => {
     return (
-        <>
-          <h1 className='text-center'>Home</h1>
-          <hr/>
-        </>
-      )
+      <div className='col-md col-sm-12'>
+        <YugiohCard cardID={cardID} apiUrl={apiUrl} />
+      </div>
+    )
+  });
+
+  return (
+    <>
+      <h1 className='text-center'>Home</h1>
+      <hr />
+      <div className='container'>
+        <div className='row'>
+          {cards}
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default Home;

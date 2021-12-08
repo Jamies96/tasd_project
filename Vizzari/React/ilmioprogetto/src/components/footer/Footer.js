@@ -20,29 +20,37 @@ function Footer(props) {
         );
     });
 
-    return (
-        <footer class="fixed-bottom">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-1 col-sm-12 text-center d-md-flex justify-content-start">
-                        <ul className="nav flex-column">
-                            {listItems}
-                        </ul>
-                    </div>
+    const brSpaces = [];
+    for(let i = 0; i < 13; ++i) {
+        brSpaces.push(<br/>)
+    }
 
-                    <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end" id="col-logos">
-                        <a href={first_logo_url}><img src={first_logo} /></a>
-                        <a href={second_logo_url}><img src={second_logo} /></a>
-                    </div>
-                    <hr />
+    return (
+        <>
+           {brSpaces}
+            <footer className="fixed-bottom">
+                <div className="container">
                     <div className="row">
-                        <div className="col-12 text-center">
-                            {lastLineText}
+                        <div className="col-md-1 col-sm-12 text-center d-md-flex justify-content-start">
+                            <ul className="nav flex-column">
+                                {listItems}
+                            </ul>
+                        </div>
+
+                        <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end" id="col-logos">
+                            <a href={first_logo_url}><img src={first_logo} /></a>
+                            <a href={second_logo_url}><img src={second_logo} /></a>
+                        </div>
+                        <hr />
+                        <div className="row">
+                            <div className="col-12 text-center">
+                                {lastLineText}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </>
     )
 }
 
