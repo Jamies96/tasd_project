@@ -8,8 +8,8 @@ img.yugioh-card:hover {
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     text-align: center;
     vertical-align: center;
     color: crimson;
