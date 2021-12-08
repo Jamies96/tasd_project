@@ -1,0 +1,38 @@
+@keyframes rotateCard {
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.flip-card {
+    transform-style: preserve-3d;
+    animation: rotateCard 1.5s forwards;
+}
+
+.flip-card,
+.flip-card img {
+    width: 25rem;
+    height: 35rem;
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    transform: rotateY(180deg);
+}
+
+th,
+td {
+    padding: 30px !important;
+}
+
+.atk-def:hover {
+    font-size: larger;
+    font-weight: bolder;
+    color: lightseagreen;
+}

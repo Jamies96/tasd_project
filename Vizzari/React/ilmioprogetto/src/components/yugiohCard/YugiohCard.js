@@ -3,10 +3,12 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, CardHeader, CardFooter, Badge
 } from 'reactstrap';
+import { Link } from "react-router-dom";
 import './YugiohCard.css';
 
 function YugiohCard(props) {
     const cardID = props.cardID;
+    const detailsUrl = "/cards/" + cardID;
     const apiUrl = props.apiUrl;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -17,7 +19,7 @@ function YugiohCard(props) {
         return {
             name: card.name,
             type: card.type,
-            desc: card.desc.substring(0, 25).replaceAll("'", "")+'...',
+            desc: card.desc.replaceAll("'", "").substring(0, 25) + '...',
             atk: card.atk,
             def: card.def,
             level: card.level,
@@ -50,15 +52,17 @@ function YugiohCard(props) {
         return (
             <>
                 <Card body inverse className="bg-dark d-flex h-100">
-                <CardImg src={cardImage}></CardImg>
-                <div className="choice-me">
-                    Choice me!
-                </div>
-                    <CardHeader className=" d-flex h-100"><h2>{card.name}</h2></CardHeader>                    
+                    <Link to={detailsUrl}>
+                        <CardImg src={cardImage} className="yugioh-card"></CardImg>
+                        <div className="choice-me">
+                            Choice me!
+                        </div>
+                    </Link>
+                    <CardHeader className=" d-flex h-100"><h2>{card.name}</h2></CardHeader>
                     <CardBody>
                         <CardTitle>
                             <h4>{card.race}</h4>
-                            </CardTitle>
+                        </CardTitle>
                         <CardText>
                             <ul>
                                 <li>Type: <Badge pill >{card.type}</Badge></li>
@@ -66,7 +70,9 @@ function YugiohCard(props) {
                             </ul>
                             {card.desc}
                         </CardText>
-                        <Button color="info">View card</Button>
+                        <Link to={detailsUrl}>
+                            <Button color="info">View card</Button>
+                        </Link>
                     </CardBody>
                 </Card>
             </>

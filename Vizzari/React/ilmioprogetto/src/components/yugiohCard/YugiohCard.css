@@ -1,4 +1,4 @@
-img:hover {
+img.yugioh-card:hover {
     filter: grayscale(100%);
     opacity: 0.3;
 }
@@ -16,6 +16,6 @@ img:hover {
     /*transform: rotate(-45deg);*/
 }
 
-img:hover+.choice-me {
+img.yugioh-card:hover+.choice-me {
     opacity: 1;
 }

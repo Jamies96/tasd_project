@@ -21,14 +21,14 @@ function Footer(props) {
     });
 
     const brSpaces = [];
-    for(let i = 0; i < 13; ++i) {
+    for(let i = 0; i < 5; ++i) {
         brSpaces.push(<br/>)
     }
 
     return (
         <>
            {brSpaces}
-            <footer className="fixed-bottom">
+            <footer>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-1 col-sm-12 text-center d-md-flex justify-content-start">
