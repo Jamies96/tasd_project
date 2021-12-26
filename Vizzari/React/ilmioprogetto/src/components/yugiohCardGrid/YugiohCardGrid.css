@@ -1,9 +1,9 @@
-img.yugioh-card:hover {
+.yugioh-card-grid:hover img {
     filter: grayscale(100%);
     opacity: 0.3;
 }
 
-.choice-me {
+.choice-me-grid {
     opacity: 0;
     position: absolute;
     top: 30%;
@@ -13,9 +13,12 @@ img.yugioh-card:hover {
     text-align: center;
     vertical-align: center;
     color: crimson;
-    /*transform: rotate(-45deg);*/
 }
 
-img.yugioh-card:hover+.choice-me {
+.yugioh-card-grid:hover .choice-me-grid {
     opacity: 1;
+}
+
+.card-title-grid {
+    word-break: break-word;
 }

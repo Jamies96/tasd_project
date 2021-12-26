@@ -1,0 +1,12 @@
+/*.list-group-item:hover img {
+    filter: grayscale(100%);
+    opacity: 0.3;
+}*/
+
+.yugioh-card-list img {
+    width: 40%;
+}
+
+.list-group-item:hover {
+    background-color: rgba(89, 87, 117, 0.856) !important;
+}

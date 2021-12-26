@@ -8,7 +8,7 @@ import './YugiohCardDetails.css';
 import cardback from '../../assets/img/cardbackYuGiOh.jpg';
 
 function YugiohCardDetails(props) {
-    const cardID = useParams().id
+    const cardID = useParams().id;
     const apiUrl = props.apiUrl;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);

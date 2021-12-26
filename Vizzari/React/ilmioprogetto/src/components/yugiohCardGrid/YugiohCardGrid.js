@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, CardHeader, CardFooter, Badge
+    Card, CardImg, CardBody, Button, CardHeader
 } from 'reactstrap';
 import { Link } from "react-router-dom";
-import './YugiohCard.css';
+import './YugiohCardGrid.css';
 
-function YugiohCard(props) {
+function YugiohCardGrid(props) {
     const cardID = props.cardID;
-    const detailsUrl = "/cards/" + cardID;
+    const detailsUrl = "/card/" + cardID;
     const apiUrl = props.apiUrl;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -32,6 +31,7 @@ function YugiohCard(props) {
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result)
                     setIsLoaded(true);
                     let fullCardDetails = result.data[0];
                     setCard(extractCardDetails(fullCardDetails));
@@ -42,7 +42,7 @@ function YugiohCard(props) {
                     setError(error);
                 }
             )
-    }, []);
+    });
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -51,25 +51,15 @@ function YugiohCard(props) {
     } else {
         return (
             <>
-                <Card body inverse className="bg-dark d-flex h-100">
-                    <Link to={detailsUrl}>
-                        <CardImg src={cardImage} className="yugioh-card"></CardImg>
-                        <div className="choice-me">
+                <Card body inverse className="bg-dark d-flex h-100 card-grid">
+                    <Link to={detailsUrl} className="yugioh-card-grid">
+                        <CardImg src={cardImage}></CardImg>
+                        <div className="choice-me-grid">
                             Choice me!
                         </div>
                     </Link>
-                    <CardHeader className=" d-flex h-100"><h2>{card.name}</h2></CardHeader>
+                    <CardHeader className="d-flex h-100"><h2 className="card-title-grid">{card.name}</h2></CardHeader>
                     <CardBody>
-                        <CardTitle>
-                            <h4>{card.race}</h4>
-                        </CardTitle>
-                        <CardText>
-                            <ul>
-                                <li>Type: <Badge pill >{card.type}</Badge></li>
-                                <li>Level: <Badge color="danger" text="">{card.level}</Badge></li>
-                            </ul>
-                            {card.desc}
-                        </CardText>
                         <Link to={detailsUrl}>
                             <Button color="info">View card</Button>
                         </Link>
@@ -80,4 +70,4 @@ function YugiohCard(props) {
     }
 }
 
-export default YugiohCard;
+export default YugiohCardGrid;
