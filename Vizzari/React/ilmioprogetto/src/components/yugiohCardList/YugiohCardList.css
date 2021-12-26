@@ -1,8 +1,3 @@
-/*.list-group-item:hover img {
-    filter: grayscale(100%);
-    opacity: 0.3;
-}*/
-
 .yugioh-card-list img {
     width: 40%;
 }

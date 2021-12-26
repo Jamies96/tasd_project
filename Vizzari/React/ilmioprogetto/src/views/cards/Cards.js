@@ -76,7 +76,7 @@ function Cards(props) {
       <div className='container'>
         <div className='row'>
           <div className='col-11'>
-            <ButtonGroup>
+            Decks: <ButtonGroup>
               {deckFilterButtons}
             </ButtonGroup>
           </div>

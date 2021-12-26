@@ -6,7 +6,7 @@ function GridDisplay(props) {
     const cardsId = props.cardsId;
     const apiUrl = props.apiUrl;
 
-    const createCols = function (array) {        
+    const createCols = function (array) {
         const cols = [];
         for (let cardID of array) {
             cols.push(
@@ -17,7 +17,6 @@ function GridDisplay(props) {
         }
         return cols;
     }
-
 
     const createRows = function () {
         const matrix = [];

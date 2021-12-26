@@ -1,0 +1,14 @@
+.plot {
+    background-color: grey;
+    opacity: 9;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+.backg img {
+    position: relative;
+    left: -40%;
+    width: 200%;
+    height: auto;
+    z-index: -1;
+}
