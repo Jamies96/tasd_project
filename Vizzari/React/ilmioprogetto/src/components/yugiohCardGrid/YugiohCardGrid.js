@@ -61,7 +61,7 @@ function YugiohCardGrid(props) {
                     <CardHeader className="d-flex h-100"><h2 className="card-title-grid">{card.name}</h2></CardHeader>
                     <CardBody>
                         <Link to={detailsUrl}>
-                            <Button color="info">View card</Button>
+                            <Button className="my-blue-btn">View card</Button>
                         </Link>
                     </CardBody>
                 </Card>

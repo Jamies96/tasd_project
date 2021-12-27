@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { useParams, Link } from "react-router-dom";
 import CardsData from '../../assets/data/info';
-import { ButtonGroup, Button, ButtonToggle } from 'reactstrap';
+import { ButtonGroup, Button} from 'reactstrap';
 import clsx from 'clsx';
 import GridDisplay from '../../components/gridDisplay/GridDisplay';
 import ListDisplay from '../../components/listDisplay/ListDisplay';
@@ -14,7 +14,7 @@ function Cards(props) {
   const [displayGrid, setDisplayGrid] = useState(true);
 
 
-  const createDeckFilter = function () {
+  const createButtonFilter = function () {
     const allButton = <Link to="/cards"><Button
       color="primary"
       className={clsx({ active: (deck === 'all') })}
@@ -23,7 +23,7 @@ function Cards(props) {
     </Button></Link>;
     let buttons = [allButton];
     for (let deckItem of CardsData['decks']) {
-      let url = "/cards/" + deckItem.owner
+      const url = "/cards/" + deckItem.owner
       buttons.push(
         <Link to={url}><Button
           color="primary"
@@ -36,7 +36,7 @@ function Cards(props) {
     return buttons;
   }
 
-  const deckFilterButtons = createDeckFilter();
+  const deckFilterButtons = createButtonFilter();
 
   const getDeck = function () {
     let cards = [];

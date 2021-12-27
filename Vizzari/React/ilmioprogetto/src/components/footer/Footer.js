@@ -4,6 +4,12 @@ import first_logo from '../../assets/img/logo_unimib.png';
 import second_logo from '../../assets/img/logo_disco.png';
 import { NavLink } from 'react-router-dom';
 
+/*
+    This is a stateless component which sets the footer of the web application.
+    The footer is composed by navlinks.
+    and the related links.
+*/
+
 function Footer(props) {
     const lastLineText = props.lastLineText;
     const first_logo_url = props.first_logo_url;
@@ -19,7 +25,7 @@ function Footer(props) {
             </li>
         );
     });
-
+// This loop is needed to create a void space.
     const brSpaces = [];
     for(let i = 0; i < 5; ++i) {
         brSpaces.push(<br/>)

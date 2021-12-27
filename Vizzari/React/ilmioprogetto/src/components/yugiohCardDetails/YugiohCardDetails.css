@@ -36,3 +36,8 @@ td {
     font-weight: bolder;
     color: lightseagreen;
 }
+
+.my-blue-btn {
+    background-color: rgb(67, 67, 248) !important;
+    border-color: rgb(67, 67, 248) !important;
+}

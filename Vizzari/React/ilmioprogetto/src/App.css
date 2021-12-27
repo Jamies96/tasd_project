@@ -10,3 +10,13 @@ h1 {
     font-family: 'Montserrat', sans-serifs;
     font-weight: bold 700;
 }
+
+.my-blue-btn {
+    background-color: rgb(67, 67, 248) !important;
+    border-color: rgb(67, 67, 248) !important;
+}
+
+.my-blue-btn:hover {
+    background-color: rgb(111, 111, 248) !important;
+    border-color: rgb(111, 111, 248) !important;
+}

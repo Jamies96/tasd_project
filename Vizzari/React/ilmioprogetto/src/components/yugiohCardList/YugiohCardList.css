@@ -5,3 +5,8 @@
 .list-group-item:hover {
     background-color: rgba(89, 87, 117, 0.856) !important;
 }
+
+.my-blue-btn {
+    background-color: rgb(67, 67, 248) !important;
+    border-color: rgb(67, 67, 248) !important;
+}

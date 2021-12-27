@@ -62,7 +62,7 @@ function YugiohCardGrid(props) {
                             <div className="col-9">
                                 <h2>{card.name}</h2>
                                 <Link to={detailsUrl}>
-                                    <Button color="info">View card</Button>
+                                    <Button className="my-blue-btn">View card</Button>
                                 </Link>
                             </div>
                         </div>

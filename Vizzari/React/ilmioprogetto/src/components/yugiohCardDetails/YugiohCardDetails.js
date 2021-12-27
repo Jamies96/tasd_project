@@ -77,7 +77,7 @@ function YugiohCardDetails(props) {
                 <div className="container">
                     <div className="row m-5">
                         <div className="col-md-2 col-sm-12">
-                            <Link to="/cards"><Button color="info">Back to Deck</Button></Link>
+                            <Link to="/cards"><Button className="my-blue-btn">Back to Cards</Button></Link>
                         </div>
 
                         <div className="col-md offset-md-4 col-sm-12">
