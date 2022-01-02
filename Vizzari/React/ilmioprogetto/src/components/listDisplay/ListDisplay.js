@@ -1,5 +1,5 @@
 import React from 'react';
-import YugiohCardList from '../yugiohCardList/YugiohCardList';
+import YugiohCard from '../yugiohCard/YugiohCard';
 import {ListGroup} from 'reactstrap';
 
 /*
@@ -19,7 +19,7 @@ function ListDisplay(props) {
         const items = [];
         for (let cardID of cardsId) {
             items.push(<ListGroup>
-                <YugiohCardList cardID={cardID} apiUrl={apiUrl}/>
+                <YugiohCard cardID={cardID} apiUrl={apiUrl} displayType='list'/>
             </ListGroup>);
         }
         return items;

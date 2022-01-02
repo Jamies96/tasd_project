@@ -1,5 +1,5 @@
 import React from 'react';
-import YugiohCardGrid from '../../components/yugiohCardGrid/YugiohCardGrid';
+import YugiohCard from '../../components/yugiohCard/YugiohCard';
 import CardsData from '../../assets/data/info';
 
 function Home(props) {
@@ -9,7 +9,7 @@ function Home(props) {
     const cards = cardsID.map((cardID) => {
         return (
             <div className='col-md col-sm-12'>
-                <YugiohCardGrid cardID={cardID} apiUrl={apiUrl}/>
+                <YugiohCard cardID={cardID} apiUrl={apiUrl} displayType='grid'/>
             </div>
         )
     });

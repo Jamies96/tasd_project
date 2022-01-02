@@ -1,5 +1,5 @@
 import React from 'react';
-import YugiohCardGrid from '../yugiohCardGrid/YugiohCardGrid';
+import YugiohCard from '../yugiohCard/YugiohCard';
 
 /*
     GridDisplay is a stateless component which sets the layout of all cards for the grid view
@@ -39,7 +39,7 @@ function GridDisplay(props) {
         for (let cardID of array) {
             cols.push(
                 <div className='col-md col-sm-12'>
-                    <YugiohCardGrid cardID={cardID} apiUrl={apiUrl}/>
+                    <YugiohCard cardID={cardID} apiUrl={apiUrl} displayType='grid'/>
                 </div>
             );
         }
