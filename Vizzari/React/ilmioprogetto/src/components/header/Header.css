@@ -1,9 +1,9 @@
 nav {
-    background-color: rgb(59, 59, 134) !important;
+    background-color: #383056 !important;
 }
 
 nav a {
-    color: white !important;
+    color: #D9CAC0 !important;
 }
 
 nav img {
@@ -12,5 +12,5 @@ nav img {
 }
 
 .nav-item a.active {
-    color: red !important;
+    color: #A06061 !important;
 }

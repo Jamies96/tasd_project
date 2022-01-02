@@ -53,7 +53,7 @@ function YugiohCardGrid(props) {
             <>
                 <Card body inverse className="bg-dark d-flex h-100 card-grid">
                     <Link to={detailsUrl} className="yugioh-card-grid">
-                        <CardImg src={cardImage}></CardImg>
+                        <CardImg src={cardImage}/>
                         <div className="choice-me-grid">
                             Choice me!
                         </div>

@@ -1,6 +1,6 @@
 footer {
-    background-color: rgb(59, 59, 134) !important;
-    color: white;
+    background-color: #383056 !important;
+    color: #D9CAC0;
     padding: 15px;
 }
 
@@ -10,6 +10,6 @@ footer {
 }
 
 .nav-item a {
-    color: white;
+    color: #D9CAC0;
     text-decoration: none;
 }

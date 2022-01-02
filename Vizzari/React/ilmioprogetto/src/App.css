@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap');
+
 html body {
-    background-color: black;
-    color: white;
-    font-family: 'Montserrat', sans-serifs;
+    background-color: #020104;
+    color: #D9CAC0;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serifs;
-    font-weight: bold 700;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 .my-blue-btn {
-    background-color: rgb(67, 67, 248) !important;
-    border-color: rgb(67, 67, 248) !important;
+    background-color: #383056 !important;
+    border-color: #383056 !important;
 }
 
 .my-blue-btn:hover {
-    background-color: rgb(111, 111, 248) !important;
-    border-color: rgb(111, 111, 248) !important;
+    background-color: #7D76B1 !important;
+    border-color: #7D76B1 !important;
 }
