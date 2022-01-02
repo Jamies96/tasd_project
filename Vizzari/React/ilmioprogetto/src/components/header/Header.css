@@ -11,6 +11,10 @@ nav img {
     height: 40px;
 }
 
-.nav-item a.active {
+.header-link.active {
     color: #A06061 !important;
+}
+
+.header-link:hover {
+    color: #606EA2 !important;
 }

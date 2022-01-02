@@ -12,7 +12,11 @@
     transform: translate(-50%, -50%);
     text-align: center;
     vertical-align: center;
+    font-weight: bold;
     color: crimson;
+    background-color: #020104;
+    padding: 3%;
+    border-radius: 10px;
 }
 
 .yugioh-card-grid:hover .choice-me-grid {

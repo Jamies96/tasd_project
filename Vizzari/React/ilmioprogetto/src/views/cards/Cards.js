@@ -16,22 +16,21 @@ function Cards(props) {
 
 
     const createButtonFilter = function () {
-        const allButton = <Link to="/cards"><Button
-
-            className={clsx({active: (deck === 'all'), 'my-btn': true})}
-        >
-            All
-        </Button></Link>;
+        const allButton = <Link to="/cards">
+            <Button className={clsx({active: (deck === 'all'), 'my-btn': true, 'm-1': true})}>
+                All
+            </Button>
+        </Link>;
         let buttons = [allButton];
         for (let deckItem of CardsData['decks']) {
             const url = "/cards/" + deckItem.owner
             buttons.push(
-                <Link to={url}><Button
-
-                    className={clsx({active: (deck === deckItem.owner), 'my-btn': true})}
-                >
-                    {deckItem.owner}
-                </Button></Link>
+                <Link to={url}>
+                    <Button
+                        className={clsx({active: (deck === deckItem.owner), 'my-btn': true, 'm-1': true})}>
+                        {deckItem.owner}
+                    </Button>
+                </Link>
             );
         }
         return buttons;
@@ -77,16 +76,17 @@ function Cards(props) {
             <div className='container'>
                 <div className='row'>
                     <div className='col-11'>
-                        Decks: <ButtonGroup>
-                        {deckFilterButtons}
-                    </ButtonGroup>
+                        Decks:
+                        <ButtonGroup>
+                            {deckFilterButtons}
+                        </ButtonGroup>
                     </div>
                     <div className='col-1'>
                         <ButtonGroup>
                             <Button onClick={changeDisplay} id="isGrid"
-                                    className={clsx({active: displayGrid === true, 'my-btn': true})}>Grid</Button>
+                                    className={clsx({active: displayGrid === true, 'my-btn': true, 'mt-1':true})}>Grid</Button>
                             <Button onClick={changeDisplay} id="isList"
-                                    className={clsx({active: displayGrid === false, 'my-btn': true})}>List</Button>
+                                    className={clsx({active: displayGrid === false, 'my-btn': true, 'mt-1':true})}>List</Button>
                         </ButtonGroup>
                     </div>
                 </div>

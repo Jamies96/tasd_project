@@ -9,7 +9,7 @@ import MainTemplate from './components/mainTemplate/MainTemplate';
 
 function App() {
     /*Footer data*/
-    const lastLineText = 'Progetto realizzato da Nada Cenci per il corso di Tecnologie e Applicazione dei Sistemi Distribuiti - a.a. 2021/2022';
+    const lastLineText = 'Project realized by Nada Cenci for Technologies and Applications of Distributed Systems course - 2021/2022';
     const first_logo_url = 'https://www.unimib.it/';
     const second_logo_url = 'https://www.disco.unimib.it/it';
 

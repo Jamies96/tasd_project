@@ -9,7 +9,11 @@ footer {
     height: 100px;
 }
 
-.nav-item a {
+.footer-link {
     color: #D9CAC0;
     text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #606EA2 !important;
 }

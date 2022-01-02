@@ -19,7 +19,7 @@ function Footer(props) {
     const listItems = pageListItem.map((item) => {
         return (
             <li className="nav-item">
-                <NavLink to={item.url}>
+                <NavLink to={item.url} className="footer-link">
                     {item.text}
                 </NavLink>
             </li>
