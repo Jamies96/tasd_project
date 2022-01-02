@@ -39,7 +39,7 @@ function GridDisplay(props) {
         for (let cardID of array) {
             cols.push(
                 <div className='col-md col-sm-12'>
-                    <YugiohCardGrid cardID={cardID} apiUrl={apiUrl} />
+                    <YugiohCardGrid cardID={cardID} apiUrl={apiUrl}/>
                 </div>
             );
         }

@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    Collapse,
-    NavbarToggler,
-} from 'reactstrap';
+import React, {useState} from "react";
+import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem,} from 'reactstrap';
 import './Header.css';
 import logo from '../../assets/img/logo.png';
-import { NavLink as RouterLink } from 'react-router-dom';
+import {NavLink as RouterLink} from 'react-router-dom';
 
 /*
     This is a statefull component which sets the header of the web application.
@@ -32,7 +25,7 @@ function Header(props) {
     // This loop is needed to creare a void space.
     const brSpaces = [];
     for (let i = 0; i < 3; ++i) {
-        brSpaces.push(<br />)
+        brSpaces.push(<br/>)
     }
 
     //The NavbarToggler component of reacstrap is needed to manage the mobile mode of the navbar
@@ -41,10 +34,10 @@ function Header(props) {
             <Navbar dark full expand="md" fixed="top">
                 <NavbarBrand>
                     <RouterLink to="/">
-                        <img src={logo} />
+                        <img src={logo}/>
                     </RouterLink>
                 </NavbarBrand>
-                <NavbarToggler onClick={() => setIsToogleOpen(!isToogleOpen)} />
+                <NavbarToggler onClick={() => setIsToogleOpen(!isToogleOpen)}/>
                 <Collapse isOpen={isToogleOpen} navbar>
                     <Nav className="ml-auto container-fluid" navbar>
                         {listItems}

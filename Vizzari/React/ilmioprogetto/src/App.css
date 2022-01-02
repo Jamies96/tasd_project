@@ -12,12 +12,12 @@ h1 {
     font-weight: 700;
 }
 
-.my-blue-btn {
+.my-btn {
     background-color: #383056 !important;
     border-color: #383056 !important;
 }
 
-.my-blue-btn:hover {
+.my-btn:hover {
     background-color: #7D76B1 !important;
     border-color: #7D76B1 !important;
 }

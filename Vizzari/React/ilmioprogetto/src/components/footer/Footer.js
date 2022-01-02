@@ -2,7 +2,7 @@ import React from "react";
 import './Footer.css';
 import first_logo from '../../assets/img/logo_unimib.png';
 import second_logo from '../../assets/img/logo_disco.png';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 /*
     This is a stateless component which sets the footer of the web application.
@@ -27,13 +27,13 @@ function Footer(props) {
     });
 // This loop is needed to create a void space.
     const brSpaces = [];
-    for(let i = 0; i < 5; ++i) {
+    for (let i = 0; i < 5; ++i) {
         brSpaces.push(<br/>)
     }
 
     return (
         <>
-           {brSpaces}
+            {brSpaces}
             <footer>
                 <div className="container">
                     <div className="row">
@@ -43,11 +43,12 @@ function Footer(props) {
                             </ul>
                         </div>
 
-                        <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end" id="col-logos">
-                            <a href={first_logo_url}><img src={first_logo} /></a>
-                            <a href={second_logo_url}><img src={second_logo} /></a>
+                        <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end"
+                             id="col-logos">
+                            <a href={first_logo_url}><img src={first_logo}/></a>
+                            <a href={second_logo_url}><img src={second_logo}/></a>
                         </div>
-                        <hr />
+                        <hr/>
                         <div className="row">
                             <div className="col-12 text-center">
                                 {lastLineText}

@@ -1,8 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, CardHeader, CardFooter, Badge, ListGroupItem, Media
-} from 'reactstrap';
+import React, {useEffect, useState} from "react";
+import {Button, ListGroupItem} from 'reactstrap';
 import {Link} from "react-router-dom";
 import './YugiohCardList.css';
 
@@ -62,7 +59,7 @@ function YugiohCardGrid(props) {
                             <div className="col-9">
                                 <h2>{card.name}</h2>
                                 <Link to={detailsUrl}>
-                                    <Button className="my-blue-btn">View card</Button>
+                                    <Button className="my-btn">View card</Button>
                                 </Link>
                             </div>
                         </div>

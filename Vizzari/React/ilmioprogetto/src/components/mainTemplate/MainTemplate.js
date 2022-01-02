@@ -11,13 +11,13 @@ function MainTemplate(props) {
 
     return (
         <>
-            <Header 
+            <Header
                 pageListItem={pageListItem}
             />
             {pageBody}
-            <Footer 
-                lastLineText={lastLineText} 
-                first_logo_url={first_logo_url} 
+            <Footer
+                lastLineText={lastLineText}
+                first_logo_url={first_logo_url}
                 second_logo_url={second_logo_url}
                 pageListItem={pageListItem}
             />

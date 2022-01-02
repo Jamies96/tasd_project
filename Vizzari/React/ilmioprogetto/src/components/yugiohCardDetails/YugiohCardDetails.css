@@ -34,10 +34,6 @@ td {
 .atk-def:hover {
     font-size: larger;
     font-weight: bolder;
-    color: lightseagreen;
+    color: #9B4065;
 }
 
-.my-blue-btn {
-    background-color: rgb(67, 67, 248) !important;
-    border-color: rgb(67, 67, 248) !important;
-}
