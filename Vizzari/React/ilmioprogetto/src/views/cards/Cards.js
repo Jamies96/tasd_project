@@ -3,8 +3,8 @@ import {Link, useParams} from "react-router-dom";
 import CardsData from '../../assets/data/info';
 import {Button, ButtonGroup} from 'reactstrap';
 import clsx from 'clsx';
-import GridDisplay from '../../components/gridDisplay/GridDisplay';
-import ListDisplay from '../../components/listDisplay/ListDisplay';
+import GridDisplay from '../../components/display/gridDisplay/GridDisplay';
+import ListDisplay from '../../components/display/listDisplay/ListDisplay';
 import './Cards.css';
 
 function Cards(props) {

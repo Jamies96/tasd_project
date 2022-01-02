@@ -1,5 +1,5 @@
 import React from 'react';
-import YugiohCard from '../yugiohCard/YugiohCard';
+import YugiohCard from '../../yugiohCard/YugiohCard';
 
 /*
     GridDisplay is a stateless component which sets the layout of all cards for the grid view

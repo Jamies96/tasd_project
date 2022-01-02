@@ -1,5 +1,5 @@
 import React from 'react';
-import YugiohCard from '../yugiohCard/YugiohCard';
+import YugiohCard from '../../yugiohCard/YugiohCard';
 import {ListGroup} from 'reactstrap';
 
 /*
