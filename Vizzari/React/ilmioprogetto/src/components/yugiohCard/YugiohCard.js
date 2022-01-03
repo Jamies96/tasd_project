@@ -4,6 +4,9 @@ import {Button, Card, CardBody, CardHeader, CardImg, ListGroupItem} from 'reacts
 import {Link} from "react-router-dom";
 import './YugiohCard.css';
 
+/*
+    Hook component
+*/
 function YugiohCard(props) {
     const displayType = props.displayType;
     const cardID = props.cardID;
@@ -14,6 +17,9 @@ function YugiohCard(props) {
     const [card, setCard] = useState({});
     const [cardImage, setCardImage] = useState("");
 
+    /*
+    This function allow you to extract the data json to string
+    */
     const extractCardDetails = function (card) {
         return {
             name: card.name,
@@ -26,6 +32,9 @@ function YugiohCard(props) {
         }
     }
 
+    /*
+        This hook component calls the API's and it sets the response in both cases of success and error
+    */
     useEffect(() => {
         fetch(apiUrl + '?id=' + cardID)
             .then(res => res.json())

@@ -6,8 +6,8 @@ import {NavLink} from 'react-router-dom';
 
 /*
     This is a stateless component which sets the footer of the web application.
-    The footer is composed by navlinks.
-    and the related links.
+    The footer is composed by Navlink in order to lead to the corrected url.
+
 */
 
 function Footer(props) {

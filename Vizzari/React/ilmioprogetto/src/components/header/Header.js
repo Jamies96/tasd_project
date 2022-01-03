@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem,} from 'reactstrap';
+import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem} from 'reactstrap';
 import './Header.css';
 import logo from '../../assets/img/logo.png';
-import {NavLink as RouterLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 /*
     This is a statefull component which sets the header of the web application.
@@ -15,9 +15,9 @@ function Header(props) {
     const listItems = pageListItem.map((item) => {
         return (
             <NavItem>
-                <RouterLink to={item.url} className="nav-link header-link">
+                <NavLink to={item.url} className="nav-link header-link">
                     {item.text}
-                </RouterLink>
+                </NavLink>
             </NavItem>
         );
     });
@@ -33,9 +33,9 @@ function Header(props) {
         <>
             <Navbar dark full expand="md" fixed="top">
                 <NavbarBrand>
-                    <RouterLink to="/">
+                    <NavLink to="/">
                         <img src={logo}/>
-                    </RouterLink>
+                    </NavLink>
                 </NavbarBrand>
                 <NavbarToggler onClick={() => setIsToogleOpen(!isToogleOpen)}/>
                 <Collapse isOpen={isToogleOpen} navbar>

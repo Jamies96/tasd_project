@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Home from './views/home/Home';
 import Cards from './views/cards/Cards';
 import About from './views/about/About';
-import YugiohCardDetails from './components/yugiohCardDetails/YugiohCardDetails';
+import YugiohCardDetails from './views/yugiohCardDetails/YugiohCardDetails';
 import MainTemplate from './components/mainTemplate/MainTemplate';
 
 function App() {

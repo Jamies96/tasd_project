@@ -22,7 +22,7 @@ function Cards(props) {
             </Button>
         </Link>;
         let buttons = [allButton];
-        for (let deckItem of CardsData['decks']) {
+        for (let deckItem of CardsData.decks) {
             const url = "/cards/" + deckItem.owner
             buttons.push(
                 <Link to={url}>

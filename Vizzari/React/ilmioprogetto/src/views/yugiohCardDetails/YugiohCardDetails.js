@@ -4,6 +4,9 @@ import {Link, useParams} from "react-router-dom";
 import './YugiohCardDetails.css';
 import cardback from '../../assets/img/cardbackYuGiOh.jpg';
 
+/*
+    This is a hook component with only one props: apiUrl
+* */
 function YugiohCardDetails(props) {
     const cardID = useParams().id;
     const apiUrl = props.apiUrl;
