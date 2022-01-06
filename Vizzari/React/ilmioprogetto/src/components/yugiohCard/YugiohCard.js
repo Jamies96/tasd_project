@@ -10,7 +10,7 @@ import './YugiohCard.css';
 function YugiohCard(props) {
     const displayType = props.displayType;
     const cardID = props.cardID;
-    const detailsUrl = "/card/" + cardID;
+    const detailsUrl = "/tasd_project/card/" + cardID;
     const apiUrl = props.apiUrl;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);

@@ -17,15 +17,15 @@ function App() {
     const pageListItem = [
         {
             text: "Home",
-            url: "/"
+            url: "tasd_project/"
         },
         {
             text: "Cards",
-            url: "/cards"
+            url: "tasd_project/cards"
         },
         {
             text: "About",
-            url: "/about"
+            url: "tasd_project/about"
         }
     ];
 
@@ -40,11 +40,11 @@ function App() {
                 pageListItem={pageListItem}
             >
                 <Routes>
-                    <Route exact path="/" element={<Home apiUrl={apiUrl}/>}/>
-                    <Route exact path="/cards/" element={<Cards apiUrl={apiUrl}/>}/>
-                    <Route exact path="/cards/:deck" element={<Cards apiUrl={apiUrl}/>}/>
-                    <Route exact path="/card/:id" element={<YugiohCardDetails apiUrl={apiUrl}/>}/>
-                    <Route exact path="/about" element={<About/>}/>
+                    <Route exact path="tasd_project/" element={<Home apiUrl={apiUrl}/>}/>
+                    <Route exact path="tasd_project/cards/" element={<Cards apiUrl={apiUrl}/>}/>
+                    <Route exact path="tasd_project/cards/:deck" element={<Cards apiUrl={apiUrl}/>}/>
+                    <Route exact path="tasd_project/card/:id" element={<YugiohCardDetails apiUrl={apiUrl}/>}/>
+                    <Route exact path="tasd_project/about" element={<About/>}/>
                 </Routes>
             </MainTemplate>
         </BrowserRouter>

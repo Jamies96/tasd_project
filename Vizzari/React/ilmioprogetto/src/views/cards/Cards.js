@@ -27,14 +27,14 @@ function Cards(props) {
         owner's name field of every object of the array inside the decks field (found in CardsData.json).
     */
     const createButtonFilter = function () {
-        const allButton = <Link to="/cards">
+        const allButton = <Link to="/tasd_project/cards">
             <Button className={clsx({active: (deck === 'all'), 'my-btn': true, 'm-1': true})}>
                 All
             </Button>
         </Link>;
         let buttons = [allButton];
         for (let deckItem of CardsData.decks) {
-            const url = "/cards/" + deckItem.owner
+            const url = "/tasd_project/cards/" + deckItem.owner
             buttons.push(
                 <Link to={url}>
                     <Button
