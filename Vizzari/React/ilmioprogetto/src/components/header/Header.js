@@ -33,7 +33,7 @@ function Header(props) {
         <>
             <Navbar dark full expand="md" fixed="top">
                 <NavbarBrand>
-                    <NavLink to="/">
+                    <NavLink to="/tasd_project">
                         <img src={logo}/>
                     </NavLink>
                 </NavbarBrand>

@@ -22,8 +22,8 @@ function Cards(props) {
 
     /*
         This function creates the buttons of the filter:
-        - the general one that links all the cards by the attribute to="/cards"
-        - the specific ones (the owner's deck) that links to the new route /cards/:deck that is defined accessing to
+        - the general one that links all the cards by the attribute to="/tasd_project/cards"
+        - the specific ones (the owner's deck) that links to the new route /tasd_project/cards/:deck that is defined accessing to
         owner's name field of every object of the array inside the decks field (found in CardsData.json).
     */
     const createButtonFilter = function () {
