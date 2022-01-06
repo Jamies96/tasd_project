@@ -17,15 +17,15 @@ function App() {
     const pageListItem = [
         {
             text: "Home",
-            url: "tasd_project/"
+            url: "/tasd_project"
         },
         {
             text: "Cards",
-            url: "tasd_project/cards"
+            url: "/tasd_project/cards"
         },
         {
             text: "About",
-            url: "tasd_project/about"
+            url: "/tasd_project/about"
         }
     ];
 
