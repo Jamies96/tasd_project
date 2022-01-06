@@ -40,11 +40,11 @@ Il progetto è organizzato in cartelle secondo la seguente alberatura:
         - `display` contiene le cartelle `listDisplay` e `gridDisplay` con le due modalità di visualizzazione differente
           dei dati (lista e griglia) e il relativo foglio di stile
         - `mainTemplate` contiene il template di ogni pagina composto da Header e Footer
-        - `yugiohCardDetails` contengono il componente per visualizzare i dettagli della singola carta con il rispettivo
-          foglio di stile
         - `yugiohCard` contiene il componente che visualizza la singola carta in uno dei due display (grid o list).
     - la cartella `views` contiene le viste di navigazione dell'applicazione:
         - `home`, `cards`, `about`
+        - `yugiohCardDetails` contiene la view per visualizzare i dettagli della singola carta con il rispettivo foglio
+          di stile
 
 ---
 
@@ -187,7 +187,7 @@ return (
 
 ## YugiohCard
 
-Il componente `YugiohCard` è un componente hook (con stato) che vuole 3 `props`:
+Il componente `YugiohCard` è un componente statefull che vuole 3 `props`:
 
 - `displayType`, `cardID`, `apiUrl`.
 
@@ -219,14 +219,182 @@ Il rendering di questo componente dipende dal tipo di display impostato.
 
 ---
 
+## GridDisplay
+
+`GridDisplay` è un componente stateless che imposta il layout delle card a griglia.
+
+Questo componente contiene due `props`: `cardsID` e `apiUrl`.
+
+Questo componente contiene la variabile `const arrayToMatrix` che contiene una funzione anonima che prende come
+parametro gli ID delle carte e trasforma l'array di stringhe in un'array innestato o matrice (composta da `N` array,
+ognuno di 4 elementi).
+
+```javascript
+ /* This function is needed to create a matrix composed by rows of 4 elements starting from
+    an array of IDs (the cards)*/
+const arrayToMatrix = function (cardsId) {
+    const matrix = [];
+    let temp = [];
+    for (let cardId of cardsId) {
+        temp.push(cardId);
+        if (temp.length === 4) {
+            matrix.push(temp);
+            temp = [];
+        }
+    }
+    /*This if is used to deny that, if the array length is shorter than 4, the last elements
+    are lost.
+    */
+    if (temp.length > 0) {
+        matrix.push(temp);
+    }
+    return matrix;
+}
+```
+
+Ogni array contenuto nella matrice viene trasformato in una `row` di Reactstap con la funzione `createRows`.
+
+```javascript
+const createRows = function () {
+    const rows = [];
+    for (let array of matrix) {
+        const cols = createCols(array);
+        rows.push(
+            <div className='row mb-5'>
+                {cols}
+            </div>
+        );
+    }
+    return rows;
+}
+```
+
+I 4 elementi di ogni singolo array contenuto nella matrice vengono trasformati in una
+`col` di Reactstrap
+
+```javascript
+const createCols = function (array) {
+    //
+    const cols = [];
+    for (let cardID of array) {
+        cols.push(
+            <div className='col-md col-sm-12'>
+                <YugiohCard cardID={cardID} apiUrl={apiUrl} displayType='grid'/>
+            </div>
+        );
+    }
+    return cols;
+
+} 
+```
+
+---
+
+## ListDisplay
+
+`ListDisplay` è un componente stateless che imposta il layout delle card a elenco. Questo componente contiene
+due `props`: `cardsId`, `apiUrl`.
+
+`ListDisplay` contiene una variabile `createItems` che contiene una funzione anonima che converte gli ID delle carte in
+un `listItem` di un `ListGroup` di Reactstrap. Nello specifico, il componente `listItem` è `YugiohCard` che è la card
+con il `displayType list`, quindi con il layout a elemento di una lista.
+
+```javascript
+const createItems = function () {
+    const items = [];
+    for (let cardID of cardsId) {
+        items.push(<ListGroup>
+            <YugiohCard cardID={cardID} apiUrl={apiUrl} displayType='list'/>
+        </ListGroup>);
+    }
+    return items;
+}
+```
+
+---
+
 ## YugiohCardDetails
 
-`YugiohCardDetails` è una view che contiene una sola `props`:
-`apiUrl`.
+Il componente `YugiohCardDetails` è una view in cui sono presenti i dettagli della singola carta di YuGiOh!
 
-Questo componente presenta le stesse caratteristiche del componente YugiohCard, la differenza è che vengono renderizzate
-più campi ritornati dalla API (`type`, `race`, `desc`, `atk`,
-`def`) per avere una rappresentazione di dettaglio più ricca.
+`YugiohCardDetails` contiene la `props.apiUrl` e contiene l'hook `useParams` per poter recuperare il parametro `id`
+nella route definita nel componente d'ingresso dell'app `App.js`.
+
+```javascript
+<Route exact path="/card/:id" element={<YugiohCardDetails apiUrl={apiUrl}/>}/>
+```
+
+```javascript
+const cardID = useParams().id;
+```
+
+```javascript
+fetch(apiUrl + '?id=' + cardID)
+```
+
+Questo componente presenta le stesse caratteristiche del componente YugiohCard, la differenza è che vengono renderizzati
+più campi ritornati dalla API (`type`, `race`, `desc`, `atk`, `def`) per avere una rappresentazione di dettaglio più
+ricca.
+
+```javascript
+return (
+    <>
+        <div className="container">
+            <div className="row m-5">
+                <div className="col-md-2 col-sm-12">
+                    <Link to="/cards">
+                        <Button className="my-btn">Back to Cards</Button>
+                    </Link>
+                </div>
+
+                <div className="col-md offset-md-4 col-sm-12">
+                    <h1>{card.name}</h1>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md col-sm-12">
+                    <div class="flip-card">
+                        <div class="flip-card-front">
+                            <img src={cardImage}/>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src={cardback}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md  col-sm-12">
+                    <div className="row">
+                        <div className="col-12">
+                            <Table borderless dark>
+                                <tbody>
+                                    <tr>
+                                        <th>Type</th>
+                                        <td>{card.type}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Race</th>
+                                        <td>{card.race}</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </div>
+                        {atkDef}
+                        <hr/>
+                        <div className="col-12">
+                            Description
+                            <p>
+                                <br/>
+                                {card.desc}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </>
+);
+```
 
 ---
 
@@ -238,6 +406,128 @@ due componenti sono stati richiamati in `App.js` sfruttando il meccanismo delle 
 
 Per l'impostazione di questo progetto la route corrente è il contenuto della variabile
 `pageBody` ovvero la `props.children`.
+
+---
+
+## Cards
+
+Il componente `Cards` è un componente statefull e rappresenta la view della sezione Cards della navbar.
+
+`Cards` contiene la `props`: `apiUrl` e contiene l'hook `useParams` per poter recuperare il parametro `deck` nella route
+definita nel componente d'ingresso dell'app `App.js`.
+
+Questo componente contiene l'hook `useState` per impostare di default la visualizzazione a griglia.
+
+```javascript
+const [displayGrid, setDisplayGrid] = useState(true);
+```
+
+Questo componente contiene due funzioni importanti per il filtraggio delle cards.
+
+In particolare, la funzione `createButtonFilter` gestisce la creazione dei bottoni di filtraggio e la funzione
+`getDeck` ottiene le carte filtrate (è il reale meccanismo di filtraggio).
+
+`createButtonFilter` crea:
+
+- un bottone generale che rimanda alla view `Cards` con tutte le carte (tramite l'attributo `to="/cards/"` del
+  componente Link).
+- bottoni specifici (in base al numero dei proprietari di un deck) che rimandano alla view `/cards/:deck` a cui si
+  arriva accedendo al valore del campo `owner` di ogni oggetto dell'array all'interno del campo `decks` presente nel
+  file CardsData.json.
+
+```javascript
+    const createButtonFilter = function () {
+    const allButton = <Link to="/cards">
+        <Button className={clsx({active: (deck === 'all'), 'my-btn': true, 'm-1': true})}>
+            All
+        </Button>
+    </Link>;
+    let buttons = [allButton];
+    for (let deckItem of CardsData.decks) {
+        const url = "/cards/" + deckItem.owner
+        buttons.push(
+            <Link to={url}>
+                <Button
+                    className={clsx({active: (deck === deckItem.owner), 'my-btn': true, 'm-1': true})}>
+                    {deckItem.owner}
+                </Button>
+            </Link>
+        );
+    }
+    return buttons;
+}
+```
+
+`getDeck` scorre tutte le cards presenti nel file json `CardsData.json` con un ciclo-for.
+
+Se il valore di `deck` è uguale a `'all'` (e ciò significa che il deckParam dell'url è undefined) allora le carte
+mostrate sono una concatenazione di tutte le carte di ogni proprietario di un deck.
+
+Altrimenti, se il valore di `deck` è uguale a il valore di uno dei campi `owner` allora vengono mostrate solo le carte,
+quindi il deck, del suo proprietario.
+
+```javascript
+const getDeck = function () {
+    let cards = [];
+    for (let deckItem of CardsData.decks) {
+        if (deck === 'all' || deck === deckItem.owner) {
+            cards = cards.concat(deckItem.cards)
+        }
+    }
+    return cards
+}
+```
+
+`changeDisplay` è l'handler dell'evento onclick presente nei due `button` con le classi condizioni/clsx (dentro
+il `return`).
+
+La funzione `changeDisplay` cambia il tipo di display secondo l' `'id'` del `button`.
+
+Se l' `'id'` del `button`è `isGrid`, imposta l'hook `displayGrid` a `true`. Altrimenti lo imposta a `false`. Questo
+permette di far funzionare l'effetto toggle dei bottoni sfruttando le classi condizionali e automaticamente cambia anche
+la tipologia del componente mostrato (GridDisplay o ListDisplay) che viene impostato nella funzione `getCards`.
+
+```javascript
+ const changeDisplay = function (event) {
+    const id = event.target.id;
+    if (id === 'isGrid') {
+        setDisplayGrid(true);
+    } else {
+        setDisplayGrid(false);
+    }
+};
+```
+
+L'effetto toggle è permesso dalla funzione `changeDisplay` che, settando lo stato, aggiunge o toglie la classe
+`active` al `button` cliccato (di conseguenze se la classe `active` viene aggiunta, al bottone vengono applicati gli
+stili di quella classe).
+
+```javascript
+<div className='col-1'>
+    <ButtonGroup>
+        <Button onClick={changeDisplay} id="isGrid"
+                className={clsx({active: displayGrid === true, 'my-btn': true, 'mt-1': true})}>Grid
+        </Button>
+        <Button onClick={changeDisplay} id="isList"
+                className={clsx({active: displayGrid === false, 'my-btn': true, 'mt-1': true})}>List
+        </Button>
+    </ButtonGroup>
+</div>
+```
+
+---
+
+## About
+
+Il componente `About` è un componente stateless che renderizza dei paragrafi sfruttando la struttura in `rows` e `cols`
+di Reacstrap
+
+---
+
+## App.js
+
+
+
 
 
 
