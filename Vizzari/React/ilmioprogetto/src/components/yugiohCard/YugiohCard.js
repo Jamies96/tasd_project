@@ -57,9 +57,9 @@ function YugiohCard(props) {
     });
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className="text-center alert-danger">{error}</div>;
     } else if (!isLoaded) {
-        return <div>Loading...</div>;
+        return <div className="text-center alert-info">Loading...</div>;
     } else {
         if (displayType === 'grid') {
             return (
