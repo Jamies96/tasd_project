@@ -31,7 +31,7 @@ function YugiohCardDetails(props) {
                 (result) => {
                     setIsLoaded(true);
                     if (result.data === undefined) {
-                        setError("the card does not exist");
+                        setError("The card does not exist");
                     } else {
                         let fullCardDetails = result.data[0];
                         setCard(extractCardDetails(fullCardDetails));
