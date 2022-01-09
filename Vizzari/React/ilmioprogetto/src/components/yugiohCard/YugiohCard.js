@@ -41,19 +41,23 @@ function YugiohCard(props) {
             .then(
                 (result) => {
                     setIsLoaded(true);
-                    let fullCardDetails = result.data[0];
-                    setCard(extractCardDetails(fullCardDetails));
-                    setCardImage(fullCardDetails.card_images[0].image_url)
+                    if (result.data === undefined) {
+                        setError("the card does not exist");
+                    } else {
+                        let fullCardDetails = result.data[0];
+                        setCard(extractCardDetails(fullCardDetails));
+                        setCardImage(fullCardDetails.card_images[0].image_url)
+                    }
                 },
                 (error) => {
                     setIsLoaded(true);
-                    setError(error);
+                    setError("The card is temporarily unavailable");
                 }
             )
     });
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>{error}</div>;
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {

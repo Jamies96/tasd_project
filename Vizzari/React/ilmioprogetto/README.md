@@ -1,4 +1,4 @@
-# Documentation
+# Documentazione
 
 ---
 
@@ -8,7 +8,7 @@ YuGiOh! Project è un'applicazione web realizzata per il corso di Tecnologie e A
 corso di laurea magistrale Teoria e Tecnologia della comunicazione dell'Università degli Studi di Milano-Bicocca.
 
 Questa web app fornisce all'utente la possibilità di vedere le card della prima edizione di YuGiOh, gioco di carte
-dell'omonimo anime giapponese uscito nel 2009 in Italia diventato famoso tra i ragazzini.
+dell'omonimo anime giapponese uscito nel 2009 in Italia diventato famoso tra i più giovani.
 
 ---
 
@@ -48,26 +48,62 @@ Il progetto è organizzato in cartelle secondo la seguente alberatura:
 
 ---
 
+## App.js
 
-Nella pagina `App.js` sono stati importati:
+La function app è l'entry point di React-app. 
 
-- il rispettivo foglio di stile
-- la libreria React
-- i componenti della libreria react-router-dom
-- le tre view Home, Cards, About
-- La carta di dettaglio
-- il template di ogni pagina composto da Header e Footer
+In questa funzione si settano 3 costanti contenenti i dati presenti nel footer (specifici per questo progetto)
+e vengono dichiarate le routes ovvero i link per navigare la web app sia nell'header che nel footer definendo
+una struttura ad array di oggetti. 
 
-La function app è l'entry point di react e in questa funzione si settano 3 costanti contenenti i dati presenti nel
-footer specifici per questo progetto e dichiariamo le route ovvero i link per navigare la web app sia nell'header che
-nel footer.
+```javascript
+const pageListItem = [
+        {
+            text: "Home",
+            url: "/"
+        },
+        {
+            text: "Cards",
+            url: "/cards"
+        },
+        {
+            text: "About",
+            url: "/about"
+        }
+    ];
+```
 
-Viene dichiarata subito una costante che servirà per richiamare l'api.
-[Guida API YuGiOh](https://db.ygoprodeck.com/api-guide/)
+Viene dichiarata subito una costante che servirà per richiamare l'API di YuGiOh! e ottenere le carte.
+```javascript
+const apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
+```
+Le istruzioni per utilizzare questa API si possono trovare qui: [Guida API YuGiOh](https://db.ygoprodeck.com/api-guide/) 
 
-To Get Card Information:
-The Card Information endpoint is available at
-https://db.ygoprodeck.com/api/v7/cardinfo.php
+Nel `return` si utilizzano i componenti della libreria `react-router-dom` (`BrowserRouter, Route, Routes`)
+per far funzionare il meccanismo di routing, ossia la navigazione interna dell'applicazione attraverso le view.
+Inoltre, si definisce l'ordine degli elementi.
+Verrà renderizzato sempre il componente `mainTemplate` con il `child` `Route` corrispondente alla `view` corrente.
+```javascript
+ return (
+        <BrowserRouter>
+            <MainTemplate
+                lastLineText={lastLineText}
+                first_logo_url={first_logo_url}
+                second_logo_url={second_logo_url}
+                pageListItem={pageListItem}
+            >
+                <Routes>
+                    <Route exact path="/" element={<Home apiUrl={apiUrl}/>}/>
+                    <Route exact path="/cards" element={<Cards apiUrl={apiUrl}/>}/>
+                    <Route exact path="/cards/:deck" element={<Cards apiUrl={apiUrl}/>}/>
+                    <Route exact path="/card/:id" element={<YugiohCardDetails apiUrl={apiUrl}/>}/>
+                    <Route exact path="/about" element={<About/>}/>
+                </Routes>
+            </MainTemplate>
+        </BrowserRouter>
+    )
+```
+
 
 ---
 
@@ -203,13 +239,17 @@ useEffect(() => {
         .then(
             (result) => {
                 setIsLoaded(true);
-                let fullCardDetails = result.data[0];
-                setCard(extractCardDetails(fullCardDetails));
-                setCardImage(fullCardDetails.card_images[0].image_url)
+                if (result.data === undefined) {
+                    setError("the card does not exist");
+                } else {
+                    let fullCardDetails = result.data[0];
+                    setCard(extractCardDetails(fullCardDetails));
+                    setCardImage(fullCardDetails.card_images[0].image_url)
+                }
             },
             (error) => {
                 setIsLoaded(true);
-                setError(error);
+                setError("The card is temporarily unavailable");
             }
         )
 });
@@ -522,9 +562,7 @@ stili di quella classe).
 Il componente `About` è un componente stateless che renderizza dei paragrafi sfruttando la struttura in `rows` e `cols`
 di Reacstrap
 
----
 
-## App.js
 
 
 
