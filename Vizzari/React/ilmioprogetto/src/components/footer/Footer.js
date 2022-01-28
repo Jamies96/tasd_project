@@ -19,7 +19,7 @@ function Footer(props) {
     const listItems = pageListItem.map((item) => {
         return (
             <li className="nav-item">
-                <NavLink to={item.url} target="_blank" rel="noreferrer" className="footer-link">
+                <NavLink to={item.url} rel="noreferrer" target="_blank" className="footer-link">
                     {item.text}
                 </NavLink>
             </li>
