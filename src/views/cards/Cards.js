@@ -22,19 +22,19 @@ function Cards(props) {
 
     /*
         This function creates the buttons of the filter:
-        - the general one that links all the cards by the attribute to="/tasd_project/cards"
-        - the specific ones (the owner's deck) that links to the new route /tasd_project/cards/:deck that is defined accessing to
+        - the general one that links all the cards by the attribute to="/cards"
+        - the specific ones (the owner's deck) that links to the new route /cards/:deck that is defined accessing to
         owner's name field of every object of the array inside the decks field (found in CardsData.json).
     */
     const createButtonFilter = function () {
-        const allButton = <Link to="/tasd_project/cards">
+        const allButton = <Link to="/cards">
             <Button className={clsx({active: (deck === 'all'), 'my-btn': true, 'm-1': true})}>
                 All
             </Button>
         </Link>;
         let buttons = [allButton];
         for (let deckItem of CardsData.decks) {
-            const url = "/tasd_project/cards/" + deckItem.owner
+            const url = "/cards/" + deckItem.owner
             buttons.push(
                 <Link to={url}>
                     <Button
