@@ -19,7 +19,7 @@ function Footer(props) {
     const listItems = pageListItem.map((item) => {
         return (
             <li className="nav-item">
-                <NavLink to={item.url} rel="noreferrer" target="_blank" className="footer-link">
+                <NavLink to={item.url} className="footer-link">
                     {item.text}
                 </NavLink>
             </li>
@@ -45,8 +45,8 @@ function Footer(props) {
 
                         <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end"
                              id="col-logos">
-                            <a href={first_logo_url}><img src={first_logo}/></a>
-                            <a href={second_logo_url}><img src={second_logo}/></a>
+                            <a href={first_logo_url} rel="noreferrer" target="_blank" ><img src={first_logo} alt="Logo Unimib"/></a>
+                            <a href={second_logo_url} rel="noreferrer" target="_blank" ><img src={second_logo} alt="Logo DiSCo Unimib"/></a>
                         </div>
                         <hr/>
                         <div className="row">
