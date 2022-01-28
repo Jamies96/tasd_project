@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tasd_project/static/css/main.f16dc661.chunk.css",
-    "main.js": "/tasd_project/static/js/main.d07cab89.chunk.js",
-    "main.js.map": "/tasd_project/static/js/main.d07cab89.chunk.js.map",
+    "main.js": "/tasd_project/static/js/main.72312493.chunk.js",
+    "main.js.map": "/tasd_project/static/js/main.72312493.chunk.js.map",
     "runtime-main.js": "/tasd_project/static/js/runtime-main.698bc530.js",
     "runtime-main.js.map": "/tasd_project/static/js/runtime-main.698bc530.js.map",
     "static/css/2.383c0125.chunk.css": "/tasd_project/static/css/2.383c0125.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.383c0125.chunk.css",
     "static/js/2.a8495a6a.chunk.js",
     "static/css/main.f16dc661.chunk.css",
-    "static/js/main.d07cab89.chunk.js"
+    "static/js/main.72312493.chunk.js"
   ]
 }
