@@ -1,0 +1,21 @@
+html body {
+    background-color: #020104;
+    color: #D9CAC0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.my-btn {
+    background-color: #383056 !important;
+    border-color: #383056 !important;
+}
+
+.my-btn:hover {
+    background-color: #7D76B1 !important;
+    border-color: #7D76B1 !important;
+}
