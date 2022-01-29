@@ -5,7 +5,7 @@
 ## YuGiOh! Project
 
 YuGiOh! Project è un'applicazione web realizzata per il corso di Tecnologie e Applicazioni dei Sistemi Distribuiti del
-corso di laurea magistrale Teoria e Tecnologia della comunicazione dell'Università degli Studi di Milano-Bicocca.
+corso di laurea magistrale Teoria e Tecnologia della Comunicazione dell'Università degli Studi di Milano-Bicocca.
 
 Questa web app fornisce all'utente la possibilità di vedere le card della prima edizione di YuGiOh, gioco di carte
 dell'omonimo anime giapponese uscito nel 2009 in Italia diventato famoso tra i più giovani.
@@ -106,7 +106,7 @@ const apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
 
 Le istruzioni per utilizzare questa API si possono trovare qui: [Guida API YuGiOh](https://db.ygoprodeck.com/api-guide/)
 
-Nel `return` si utilizzano i componenti della libreria `react-router-dom` (`BrowserRouter, Route, Routes`)
+Nel `return` si utilizzano i componenti della libreria `react-router-dom` (`BrowserRouter, Routes, Route`)
 per far funzionare il meccanismo di routing, ossia la navigazione interna dell'applicazione attraverso le view. Inoltre,
 si definisce l'ordine degli elementi. Verrà renderizzato sempre il componente `mainTemplate` con il `child` `Route`
 corrispondente alla `view` corrente.
@@ -231,11 +231,11 @@ generici per permettere a sviluppatori futuri di cambiare file senza modificare 
 ```javascript
 <div className="col-md-3 offset-md-8 col-sm-12 text-center d-md-flex justify-content-end"
      id="col-logos">
-    <a href={first_logo_url}>
-        <img src={first_logo}/>
+    <a href={first_logo_url} target="_blank" rel="noreferrer">
+        <img src={first_logo} alt="Logo Unimib"/>
     </a>
-    <a href={second_logo_url}>
-        <img src={second_logo}/>
+    <a href={second_logo_url} target="_blank" rel="noreferrer">
+        <img src={second_logo} alt="Logo DiSCo Unimib"/>
     </a>
 </div>
 ```
@@ -304,6 +304,11 @@ useEffect(() => {
 ```
 
 Il rendering di questo componente dipende dal tipo di display impostato.
+
+Per quanto riguarda il rendering delle immagini delle cards, si tratta di un rendering parallelo tra le varie carte.
+
+Questo permette di ottimizzare i tempi di caricamento delle carte.
+
 
 ---
 
@@ -488,7 +493,7 @@ return (
 
 La view `Home` è stateless e rappresenta la sezione Home della navbar.
 
-La `Home` viene visualizzata, all'interno della web app, come `child` componente `mainTemplate`.
+La `Home` viene visualizzata, all'interno della web app, come `child` del componente `mainTemplate`.
 
 Nel `return` si mostrano 3 carte molto importanti per il protagonista e rappresentative dell'intera serie in display
 grid.
@@ -503,7 +508,7 @@ La view `Cards` è statefull e rappresenta la sezione Cards della navbar.
 impostato) nella route definita nel componente d'ingresso dell'app `App.js`. Esistono infatti due route che portano a
 questa `view` una con il parametro `deck` e una senza.
 
-Nel caso in cui il parametro deck non fosse presente il parametro viene impostato al valore `all`.
+Nel caso in cui il parametro deck non fosse presente, il parametro viene impostato al valore `all`.
 
 ```javascript
 <Route exact path="/cards" element={<Cards apiUrl={apiUrl}/>}/>
@@ -577,8 +582,9 @@ il `return`).
 
 La funzione `changeDisplay` cambia il tipo di display secondo l' `id` del `button`.
 
-Se l' `id` del `button`è `isGrid`, imposta l'hook `displayGrid` a `true`. Altrimenti lo imposta a `false`. Questo
-permette di far funzionare l'effetto toggle dei bottoni sfruttando le classi condizionali e automaticamente cambia anche
+Se l' `id` del `button`è `isGrid`, imposta l'hook `displayGrid` a `true`. Altrimenti lo imposta a `false`.
+
+Questo permette di far funzionare l'effetto toggle dei bottoni sfruttando le classi condizionali e automaticamente cambia anche
 la tipologia del componente mostrato (GridDisplay o ListDisplay) che viene impostato nella funzione `getCards`.
 
 ```javascript
@@ -621,6 +627,23 @@ di Reacstrap
 ## Deploy
 
 La web app è stata pubblicata su [GitHub Pages](https://jamies96.github.io/tasd_project/).
+
+Per poterla pubblicare su GitHub ho dovuto creare due branch su Git.
+
+Sul primo (chiamato Master, quello pubblicato su GitHub Pages) i link nelle routes sono definiti con prefisso 
+`/tasd_project/`.
+
+Sul secondo (Locale) i link nelle routes non hanno nessun prefisso.
+
+Inoltre, i due branch differiscono anche per il file package.json.
+
+Nel primo branch sono state aggiunte le parti necessarie per fare il deploy:
+
+- la dependency `gh-pages`
+
+- gli script `"predeploy": "npm run build", "deploy": "gh-pages -d build"`
+
+- e la proprietà `homepage: "https://Jamies96.github.io/tasd_project"`
 
 ---
 
