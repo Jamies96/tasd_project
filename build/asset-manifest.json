@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f7685ec2.chunk.css",
+    "main.js": "/static/js/main.1da01c16.chunk.js",
+    "main.js.map": "/static/js/main.1da01c16.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4435094b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4435094b.js.map",
+    "static/css/2.383c0125.chunk.css": "/static/css/2.383c0125.chunk.css",
+    "static/js/2.e8126bd4.chunk.js": "/static/js/2.e8126bd4.chunk.js",
+    "static/js/2.e8126bd4.chunk.js.map": "/static/js/2.e8126bd4.chunk.js.map",
+    "static/js/3.a44db7e4.chunk.js": "/static/js/3.a44db7e4.chunk.js",
+    "static/js/3.a44db7e4.chunk.js.map": "/static/js/3.a44db7e4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.383c0125.chunk.css.map": "/static/css/2.383c0125.chunk.css.map",
+    "static/css/main.f7685ec2.chunk.css.map": "/static/css/main.f7685ec2.chunk.css.map",
+    "static/js/2.e8126bd4.chunk.js.LICENSE.txt": "/static/js/2.e8126bd4.chunk.js.LICENSE.txt",
+    "static/media/cardbackYuGiOh.34b52553.jpg": "/static/media/cardbackYuGiOh.34b52553.jpg",
+    "static/media/logo.7f28e813.png": "/static/media/logo.7f28e813.png",
+    "static/media/logo_disco.4d979555.png": "/static/media/logo_disco.4d979555.png",
+    "static/media/logo_unimib.7b214daf.png": "/static/media/logo_unimib.7b214daf.png",
+    "static/media/ygo-bg.3b46fbc7.jpg": "/static/media/ygo-bg.3b46fbc7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4435094b.js",
+    "static/css/2.383c0125.chunk.css",
+    "static/js/2.e8126bd4.chunk.js",
+    "static/css/main.f7685ec2.chunk.css",
+    "static/js/main.1da01c16.chunk.js"
+  ]
+}
