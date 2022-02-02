@@ -68,7 +68,7 @@ function YugiohCard(props) {
                         <Link to={detailsUrl} className="yugioh-card-grid">
                             <CardImg src={cardImage}/>
                             <div className="choice-me-grid">
-                                Choice me!
+                                Choose me!
                             </div>
                         </Link>
                         <CardHeader className="d-flex h-100"><h2 className="card-title-grid">{card.name}</h2>
